@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Faidi! 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #fff9f0;
+    --soil: #8B5E3C;
+    --soil-dark: #6B4226;
+    --grass: #5DBB63;
+    --leaf: #3da642;
+    --petal1: #FF6B9D;
+    --petal2: #FFB347;
+    --petal3: #FF85A1;
+    --center: #FFE66D;
+    --pot: #E8834A;
+    --pot-dark: #c4632a;
+    --water: #74C8F5;
+    --stem: #4CAF50;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(180deg, #B5E8FF 0%, #D4F5C4 60%, #C8E6A0 100%);
+    min-height: 100vh;
+    overflow: hidden;
+    cursor: default;
+    position: relative;
+  }
+
+  /* Animated sky */
+  .clouds {
+    position: absolute; top: 0; left: 0; width: 100%; height: 30%;
+    pointer-events: none;
+  }
+  .cloud {
+    position: absolute;
+    background: white;
+    border-radius: 50px;
+    opacity: 0.8;
+    animation: float-cloud 18s linear infinite;
+  }
+  .cloud::before, .cloud::after {
+    content: '';
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+  }
+  .cloud1 { width: 120px; height: 40px; top: 30px; left: -140px; animation-duration: 20s; }
+  .cloud1::before { width: 60px; height: 60px; top: -30px; left: 20px; }
+  .cloud1::after { width: 45px; height: 45px; top: -20px; left: 55px; }
+  .cloud2 { width: 90px; height: 30px; top: 70px; left: -110px; animation-duration: 28s; animation-delay: -10s; opacity: 0.6; }
+  .cloud2::before { width: 45px; height: 45px; top: -22px; left: 15px; }
+  .cloud2::after { width: 35px; height: 35px; top: -15px; left: 42px; }
+  .cloud3 { width: 100px; height: 35px; top: 15px; left: -120px; animation-duration: 24s; animation-delay: -6s; opacity: 0.7; }
+  .cloud3::before { width: 50px; height: 50px; top: -25px; left: 18px; }
+  .cloud3::after { width: 40px; height: 40px; top: -18px; left: 48px; }
+  @keyframes float-cloud { from { transform: translateX(0); } to { transform: translateX(calc(100vw + 160px)); } }
+
+  /* Sun */
+  .sun {
+    position: absolute; top: 20px; right: 60px;
+    width: 70px; height: 70px;
+    background: radial-gradient(circle, #FFE066, #FFB300);
+    border-radius: 50%;
+    box-shadow: 0 0 30px #FFD700, 0 0 60px rgba(255,200,0,0.4);
+    animation: sun-pulse 3s ease-in-out infinite;
+  }
+  .sun::before {
+    content: '';
+    position: absolute;
+    inset: -18px;
+    border-radius: 50%;
+    background: repeating-conic-gradient(rgba(255,220,0,0.4) 0deg, transparent 15deg, rgba(255,220,0,0.4) 30deg);
+    animation: spin 10s linear infinite;
+  }
+  @keyframes sun-pulse { 0%,100%{box-shadow:0 0 30px #FFD700, 0 0 60px rgba(255,200,0,0.4);} 50%{box-shadow:0 0 50px #FFD700, 0 0 90px rgba(255,200,0,0.5);} }
+  @keyframes spin { from{transform:rotate(0)} to{transform:rotate(360deg)} }
+
+  /* Ground */
+  .ground {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 180px;
+    background: linear-gradient(180deg, #7EC850 0%, #5a9e38 30%, #8B5E3C 30%, #6B4226 100%);
+    border-radius: 60% 60% 0 0 / 20px 20px 0 0;
+  }
+  .ground-shine {
+    position: absolute; top: 0; left: 5%; right: 5%;
+    height: 40px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.15), transparent);
+    border-radius: 50%;
+  }
+
+  /* Flower pot */
+  .pot-container {
+    position: absolute;
+    bottom: 145px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pot {
+    position: relative;
+    width: 100px;
+    height: 85px;
+    z-index: 10;
+  }
+  .pot-top {
+    width: 110px; height: 20px;
+    background: linear-gradient(180deg, #F09555, #D4682A);
+    border-radius: 10px 10px 0 0;
+    margin: 0 auto;
+    box-shadow: 0 -3px 6px rgba(0,0,0,0.1);
+  }
+  .pot-body {
+    width: 100px; height: 65px;
+    background: linear-gradient(135deg, #E8834A 30%, #c4632a 70%, #a54e22 100%);
+    border-radius: 0 0 45px 45px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset -8px 0 20px rgba(0,0,0,0.15), 4px 6px 15px rgba(0,0,0,0.2);
+  }
+  .pot-body::before {
+    content: '';
+    position: absolute;
+    left: 15px; top: 10px;
+    width: 15px; height: 40px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 10px;
+    transform: rotate(10deg);
+  }
+  .pot-soil {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 22px;
+    background: linear-gradient(180deg, #6B4226, #5a3320);
+    border-radius: 0;
+  }
+
+  /* Water can */
+  .watercan-wrapper {
+    position: absolute;
+    bottom: 130px;
+    right: 15%;
+    z-index: 20;
+    cursor: grab;
+    transition: filter 0.2s;
+  }
+  .watercan-wrapper:hover { filter: brightness(1.1); }
+  .watercan-wrapper.pouring {
+    cursor: grabbing;
+    animation: pour-anim 1.2s ease-in-out forwards;
+  }
+
+  @keyframes pour-anim {
+    0%   { transform: translate(0,0) rotate(0deg); }
+    30%  { transform: translate(-80px, -30px) rotate(-20deg); }
+    50%  { transform: translate(-130px, -20px) rotate(-50deg); }
+    80%  { transform: translate(-130px, -20px) rotate(-50deg); }
+    100% { transform: translate(0,0) rotate(0deg); }
+  }
+
+  .watercan {
+    width: 80px;
+    height: auto;
+  }
+
+  /* Water drops */
+  .water-drops {
+    position: absolute;
+    top: 20px; left: -70px;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 25;
+  }
+  .water-drops.active { animation: drops-show 1.2s ease forwards; }
+  @keyframes drops-show {
+    0%   { opacity: 0; }
+    35%  { opacity: 1; }
+    75%  { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  .drop {
+    position: absolute;
+    width: 8px; height: 12px;
+    background: radial-gradient(ellipse at 40% 30%, #aee6ff, #4ab8f5);
+    border-radius: 50% 50% 60% 60%;
+    animation: drop-fall 0.7s ease-in forwards;
+  }
+  .drop:nth-child(1) { left: 0px; animation-delay: 0.4s; }
+  .drop:nth-child(2) { left: 14px; animation-delay: 0.5s; }
+  .drop:nth-child(3) { left: 7px; animation-delay: 0.55s; }
+  .drop:nth-child(4) { left: 21px; animation-delay: 0.45s; }
+  @keyframes drop-fall { from{transform:translateY(0);opacity:1} to{transform:translateY(60px);opacity:0} }
+
+  /* Plant stages */
+  .plant-container {
+    position: absolute;
+    bottom: 165px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 300px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 15;
+    pointer-events: none;
+  }
+
+  /* SVG plant grows here */
+  #plant-svg {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.5s ease;
+  }
+
+  /* Floating petals after bloom */
+  .petal-rain {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 100;
+    display: none;
+  }
+  .petal-rain.active { display: block; }
+  .fall-petal {
+    position: absolute;
+    top: -30px;
+    font-size: 22px;
+    animation: petal-fall linear infinite;
+    opacity: 0.85;
+  }
+  @keyframes petal-fall {
+    0%   { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0.9; }
+    50%  { transform: translateY(50vh) rotate(180deg) translateX(30px); opacity: 0.8; }
+    100% { transform: translateY(105vh) rotate(360deg) translateX(-20px); opacity: 0; }
+  }
+
+  /* Birthday message */
+  .birthday-msg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease;
+    background: radial-gradient(ellipse at center, rgba(255,230,255,0.7) 0%, rgba(255,180,230,0.4) 60%, transparent 100%);
+  }
+  .birthday-msg.show {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .msg-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.92), rgba(255,220,240,0.95));
+    border-radius: 30px;
+    padding: 50px 60px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(255,100,180,0.3), 0 0 0 3px rgba(255,150,200,0.4);
+    max-width: 480px;
+    animation: card-bounce 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    border: 2px solid rgba(255,180,220,0.6);
+  }
+  @keyframes card-bounce {
+    from { transform: scale(0.3) rotate(-5deg); opacity: 0; }
+    to   { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+
+  .msg-emoji { font-size: 64px; margin-bottom: 10px; display: block; animation: emoji-dance 1s ease infinite alternate; }
+  @keyframes emoji-dance { from{transform:rotate(-10deg) scale(1)} to{transform:rotate(10deg) scale(1.1)} }
+
+  .msg-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 48px;
+    background: linear-gradient(135deg, #FF6B9D, #FF9F47, #FF6B9D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    margin-bottom: 8px;
+    animation: shimmer 2s linear infinite;
+    background-size: 200%;
+  }
+  @keyframes shimmer { 0%{background-position:0%} 100%{background-position:200%} }
+
+  .msg-name {
+    font-family: 'Pacifico', cursive;
+    font-size: 56px;
+    background: linear-gradient(135deg, #9B59B6, #3498DB, #FF6B9D);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    background-size: 200%;
+    animation: shimmer 2.5s linear infinite;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .msg-sub {
+    font-size: 18px;
+    color: #888;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .confetti-row { font-size: 28px; letter-spacing: 4px; }
+
+  .restart-btn {
+    margin-top: 24px;
+    padding: 12px 32px;
+    background: linear-gradient(135deg, #FF6B9D, #FF9F47);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(255,100,150,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 1px;
+  }
+  .restart-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,100,150,0.5); }
+
+  /* Progress indicator */
+  .progress-bar {
+    position: fixed;
+    top: 20px; left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 50;
+  }
+  .progress-dot {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    border: 2px solid rgba(255,255,255,0.8);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .progress-dot.filled {
+    background: linear-gradient(135deg, #FF6B9D, #FFB347);
+    transform: scale(1.3);
+    box-shadow: 0 0 12px rgba(255,100,150,0.5);
+  }
+
+  /* Hint text */
+  .hint {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255,255,255,0.85);
+    color: #555;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 700;
+    z-index: 50;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: hint-pulse 2s ease-in-out infinite;
+    white-space: nowrap;
+  }
+  @keyframes hint-pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+
+  /* Sparkles */
+  .sparkle {
+    position: absolute;
+    pointer-events: none;
+    z-index: 30;
+    animation: sparkle-anim 0.8s ease forwards;
+    font-size: 20px;
+  }
+  @keyframes sparkle-anim {
+    0%   { transform: scale(0) rotate(0); opacity: 1; }
+    50%  { transform: scale(1.5) rotate(180deg); opacity: 1; }
+    100% { transform: scale(0) rotate(360deg) translateY(-40px); opacity: 0; }
+  }
+
+  /* Ripple on soil */
+  .ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(116,200,245,0.5);
+    pointer-events: none;
+    animation: ripple-grow 0.7s ease forwards;
+  }
+  @keyframes ripple-grow {
+    from { width:0; height:0; opacity:0.8; }
+    to   { width:60px; height:20px; opacity:0; }
+  }
+
+  /* Grass blades */
+  .grass-blades {
+    position: absolute;
+    bottom: 150px;
+    left: 0; right: 0;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .blade {
+    position: absolute;
+    bottom: 0;
+    width: 6px;
+    background: linear-gradient(180deg, #7EC850, #5a9e38);
+    border-radius: 3px 3px 0 0;
+    transform-origin: bottom center;
+    animation: sway 2s ease-in-out infinite alternate;
+  }
+  @keyframes sway { from{transform:rotate(-5deg)} to{transform:rotate(5deg)} }
+
+  /* Star decorations */
+  .stars {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .star {
+    position: absolute;
+    animation: twinkle 2s ease-in-out infinite;
+    font-size: 14px;
+  }
+  @keyframes twinkle { 0%,100%{opacity:0.3;transform:scale(1)} 50%{opacity:1;transform:scale(1.3)} }
+
+</style>
+</head>
+<body>
+
+<!-- Stars -->
+<div class="stars" id="stars"></div>
+
+<!-- Clouds -->
+<div class="clouds">
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
+  <div class="cloud cloud3"></div>
+</div>
+
+<!-- Sun -->
+<div class="sun"></div>
+
+<!-- Grass Blades -->
+<div class="grass-blades" id="grassBlades"></div>
+
+<!-- Ground -->
+<div class="ground"><div class="ground-shine"></div></div>
+
+<!-- Progress dots -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Plant container -->
+<div class="plant-container">
+  <svg id="plant-svg" width="180" height="280" viewBox="0 0 180 280" xmlns="http://www.w3.org/2000/svg">
+    <!-- Plant is drawn dynamically by JS -->
+  </svg>
+</div>
+
+<!-- Pot -->
+<div class="pot-container">
+  <div class="pot">
+    <div class="pot-top"></div>
+    <div class="pot-body">
+      <div class="pot-soil"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Water Can -->
+<div class="watercan-wrapper" id="watercanWrapper" title="Click to water the plant!">
+  <div class="water-drops" id="waterDrops">
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+  </div>
+  <svg class="watercan" viewBox="0 0 120 100" xmlns="http://www.w3.org/2000/svg">
+    <!-- Handle -->
+    <path d="M85,18 Q108,18 108,38 Q108,55 88,55" stroke="#5BA3D0" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <!-- Body -->
+    <ellipse cx="50" cy="55" rx="38" ry="28" fill="#74C8F5" stroke="#5BA3D0" stroke-width="2"/>
+    <rect x="12" y="40" width="76" height="30" rx="8" fill="#74C8F5" stroke="#5BA3D0" stroke-width="2"/>
+    <ellipse cx="50" cy="70" rx="38" ry="10" fill="#5BA3D0" opacity="0.5"/>
+    <!-- Spout -->
+    <path d="M12,48 Q-10,40 -20,32" stroke="#5BA3D0" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <circle cx="-20" cy="32" r="5" fill="#5BA3D0"/>
+    <!-- Shine -->
+    <ellipse cx="38" cy="44" rx="10" ry="6" fill="white" opacity="0.25" transform="rotate(-15,38,44)"/>
+    <!-- Water level -->
+    <ellipse cx="50" cy="55" rx="34" ry="12" fill="#4FB8E8" opacity="0.4"/>
+    <!-- Cap -->
+    <ellipse cx="50" cy="30" rx="22" ry="8" fill="#5BA3D0"/>
+    <rect x="28" y="22" width="44" height="10" rx="5" fill="#5BA3D0"/>
+  </svg>
+</div>
+
+<!-- Petal rain -->
+<div class="petal-rain" id="petalRain"></div>
+
+<!-- Hint -->
+<div class="hint" id="hint">🌿 Click the water can to water the plant!</div>
+
+<!-- Birthday Message -->
+<div class="birthday-msg" id="birthdayMsg">
+  <div class="msg-card">
+    <span class="msg-emoji">🎂</span>
+    <div class="msg-title">Happy Birthday</div>
+    <span class="msg-name">Faidi!</span>
+    <p class="msg-sub">Wishing you a day as beautiful as you are 🌸</p>
+    <div class="confetti-row">🎉 🎈 🎊 🌺 🎁</div>
+    <button class="restart-btn" onclick="restart()">🌱 Grow Again!</button>
+  </div>
+</div>
+
+<script>
+  const TOTAL_WATERS = 6;
+  let waterCount = 0;
+  let isPouring = false;
+
+  // ---- Generate decorations ----
+  const starEmojis = ['✦','✧','⋆','★'];
+  const starsEl = document.getElementById('stars');
+  for (let i = 0; i < 18; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    s.textContent = starEmojis[i % starEmojis.length];
+    s.style.left = Math.random() * 95 + '%';
+    s.style.top = Math.random() * 55 + '%';
+    s.style.animationDelay = Math.random() * 2 + 's';
+    s.style.color = ['#FFD700','#FF9F47','#FF6B9D','#74C8F5','#B5FF8A'][i % 5];
+    starsEl.appendChild(s);
+  }
+
+  // Grass blades
+  const grassEl = document.getElementById('grassBlades');
+  for (let i = 0; i < 30; i++) {
+    const b = document.createElement('div');
+    b.className = 'blade';
+    b.style.left = Math.random() * 100 + '%';
+    b.style.height = (15 + Math.random() * 20) + 'px';
+    b.style.animationDelay = Math.random() * 2 + 's';
+    b.style.animationDuration = (1.5 + Math.random()) + 's';
+    grassEl.appendChild(b);
+  }
+
+  // Progress dots
+  const pbEl = document.getElementById('progressBar');
+  for (let i = 0; i < TOTAL_WATERS; i++) {
+    const d = document.createElement('div');
+    d.className = 'progress-dot';
+    d.id = 'dot-' + i;
+    pbEl.appendChild(d);
+  }
+
+  // ---- Plant drawing ----
+  function getPlantSVG(stage) {
+    // stage 0-6
+    const s = Math.min(stage, TOTAL_WATERS);
+    const progress = s / TOTAL_WATERS;
+
+    let content = '';
+
+    // Stem height grows from 20px to 200px
+    const stemH = 20 + (180 * progress);
+    const stemX = 90;
+    const baseY = 280;
+    const topY = baseY - stemH;
+
+    if (s === 0) {
+      // Tiny sprout
+      content = `
+        <line x1="90" y1="280" x2="90" y2="258" stroke="#4CAF50" stroke-width="5" stroke-linecap="round"/>
+        <ellipse cx="83" cy="255" rx="10" ry="6" fill="#66BB6A" transform="rotate(-30,83,255)"/>
+        <ellipse cx="97" cy="252" rx="10" ry="6" fill="#81C784" transform="rotate(30,97,252)"/>
+      `;
+      return content;
+    }
+
+    // Draw main stem
+    const curve = progress > 0.4 ? 12 : 5;
+    content += `<path d="M${stemX},${baseY} Q${stemX+curve},${(baseY+topY)/2} ${stemX},${topY}" stroke="#4CAF50" stroke-width="${4 + progress*4}" fill="none" stroke-linecap="round"/>`;
+
+    // Leaves appear at stages 1-3
+    if (s >= 1) {
+      const lY = baseY - stemH * 0.3;
+      const sz = 14 + s * 3;
+      content += `<ellipse cx="${stemX - sz}" cy="${lY}" rx="${sz}" ry="${sz*0.55}" fill="#66BB6A" transform="rotate(-25,${stemX-sz},${lY})"/>`;
+      content += `<line x1="${stemX}" y1="${lY+2}" x2="${stemX-sz+3}" y2="${lY}" stroke="#4CAF50" stroke-width="2"/>`;
+    }
+    if (s >= 2) {
+      const lY = baseY - stemH * 0.55;
+      const sz = 16 + s * 3;
+      content += `<ellipse cx="${stemX + sz}" cy="${lY}" rx="${sz}" ry="${sz*0.55}" fill="#81C784" transform="rotate(25,${stemX+sz},${lY})"/>`;
+      content += `<line x1="${stemX}" y1="${lY+2}" x2="${stemX+sz-3}" y2="${lY}" stroke="#4CAF50" stroke-width="2"/>`;
+    }
+    if (s >= 3) {
+      const lY = baseY - stemH * 0.65;
+      const sz = 14 + s * 2;
+      content += `<ellipse cx="${stemX - sz + 5}" cy="${lY - 5}" rx="${sz * 0.9}" ry="${sz * 0.5}" fill="#A5D6A7" transform="rotate(-20,${stemX-sz+5},${lY-5})"/>`;
+    }
+
+    // Bud at stages 4-5
+    if (s >= 4 && s < TOTAL_WATERS) {
+      const budSize = 8 + (s - 4) * 12;
+      // Sepals
+      for (let i = 0; i < 5; i++) {
+        const angle = (i / 5) * Math.PI * 2;
+        const bx = stemX + Math.cos(angle) * budSize * 0.6;
+        const by = topY + Math.sin(angle) * budSize * 0.4;
+        content += `<ellipse cx="${bx}" cy="${by}" rx="${budSize*0.35}" ry="${budSize*0.55}" fill="#4CAF50" transform="rotate(${(angle*180/Math.PI)},${bx},${by})"/>`;
+      }
+      // Bud center
+      content += `<ellipse cx="${stemX}" cy="${topY}" rx="${budSize * 0.5}" ry="${budSize * 0.65}" fill="#FF85A1"/>`;
+    }
+
+    // Full flower at stage 6
+    if (s >= TOTAL_WATERS) {
+      const flowerX = stemX;
+      const flowerY = topY;
+      const petalColors = ['#FF6B9D','#FF85A1','#FFB347','#FF9FBD','#FF7DAA','#FFD580','#FF8CB4','#FFE599'];
+      const numPetals = 8;
+      const pr = 28; // petal radius
+
+      // Outer petals glow
+      content += `<circle cx="${flowerX}" cy="${flowerY}" r="${pr+18}" fill="rgba(255,150,180,0.15)"/>`;
+
+      for (let i = 0; i < numPetals; i++) {
+        const angle = (i / numPetals) * Math.PI * 2 - Math.PI/8;
+        const px = flowerX + Math.cos(angle) * pr;
+        const py = flowerY + Math.sin(angle) * pr;
+        content += `
+          <ellipse cx="${px}" cy="${py}" rx="13" ry="20"
+            fill="${petalColors[i % petalColors.length]}"
+            transform="rotate(${angle * 180 / Math.PI + 90},${px},${py})"
+            opacity="0.92"/>`;
+      }
+      // Inner ring
+      for (let i = 0; i < numPetals; i++) {
+        const angle = (i / numPetals) * Math.PI * 2;
+        const px = flowerX + Math.cos(angle) * 14;
+        const py = flowerY + Math.sin(angle) * 14;
+        content += `<circle cx="${px}" cy="${py}" r="7" fill="#FFD580" opacity="0.7"/>`;
+      }
+      // Center
+      content += `<circle cx="${flowerX}" cy="${flowerY}" r="16" fill="#FFE066" stroke="#FFB300" stroke-width="2"/>`;
+      content += `<circle cx="${flowerX}" cy="${flowerY}" r="10" fill="#FFD700"/>`;
+      // Center dots
+      for (let i = 0; i < 6; i++) {
+        const angle = (i / 6) * Math.PI * 2;
+        content += `<circle cx="${flowerX + Math.cos(angle)*6}" cy="${flowerY + Math.sin(angle)*6}" r="2" fill="#E65100" opacity="0.8"/>`;
+      }
+      // Sparkle petals
+      content += `<text x="${flowerX-8}" y="${flowerY-pr-20}" font-size="18" opacity="0.9">✨</text>`;
+      content += `<text x="${flowerX+pr+8}" y="${flowerY+5}" font-size="16" opacity="0.85">🌟</text>`;
+      content += `<text x="${flowerX-pr-22}" y="${flowerY+5}" font-size="16" opacity="0.85">💫</text>`;
+    }
+
+    return content;
+  }
+
+  function renderPlant() {
+    const svg = document.getElementById('plant-svg');
+    svg.innerHTML = getPlantSVG(waterCount);
+  }
+
+  renderPlant();
+
+  // ---- Water can interaction ----
+  const canWrapper = document.getElementById('watercanWrapper');
+  const waterDrops = document.getElementById('waterDrops');
+  const hintEl = document.getElementById('hint');
+
+  canWrapper.addEventListener('click', () => {
+    if (isPouring || waterCount >= TOTAL_WATERS) return;
+    doWater();
+  });
+
+  function doWater() {
+    isPouring = true;
+    canWrapper.classList.add('pouring');
+    waterDrops.classList.add('active');
+
+    // Ripple on soil
+    setTimeout(() => {
+      spawnRipple();
+      spawnSparkles();
+    }, 650);
+
+    setTimeout(() => {
+      canWrapper.classList.remove('pouring');
+      waterDrops.classList.remove('active');
+      waterCount++;
+      updateProgress();
+      renderPlant();
+      updateHint();
+      isPouring = false;
+
+      if (waterCount >= TOTAL_WATERS) {
+        setTimeout(showBirthday, 700);
+      }
+    }, 1250);
+  }
+
+  function updateProgress() {
+    for (let i = 0; i < TOTAL_WATERS; i++) {
+      const d = document.getElementById('dot-' + i);
+      if (i < waterCount) d.classList.add('filled');
+    }
+  }
+
+  function updateHint() {
+    const remaining = TOTAL_WATERS - waterCount;
+    if (waterCount === 0) {
+      hintEl.textContent = '🌿 Click the water can to water the plant!';
+    } else if (waterCount < TOTAL_WATERS) {
+      hintEl.textContent = `💧 Keep watering! ${remaining} more time${remaining > 1 ? 's' : ''} to go...`;
+    } else {
+      hintEl.style.display = 'none';
+    }
+  }
+
+  function spawnRipple() {
+    const potContainer = document.querySelector('.pot-container');
+    const r = document.createElement('div');
+    r.className = 'ripple';
+    r.style.left = '30px';
+    r.style.top = '5px';
+    r.style.position = 'absolute';
+    potContainer.style.position = 'relative';
+    potContainer.appendChild(r);
+    setTimeout(() => r.remove(), 700);
+  }
+
+  function spawnSparkles() {
+    const emojis = ['✨','💧','🌊','⭐','💦'];
+    for (let i = 0; i < 4; i++) {
+      const sp = document.createElement('div');
+      sp.className = 'sparkle';
+      sp.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      sp.style.left = (38 + Math.random() * 15) + '%';
+      sp.style.top = (35 + Math.random() * 20) + '%';
+      sp.style.animationDelay = (i * 0.1) + 's';
+      document.body.appendChild(sp);
+      setTimeout(() => sp.remove(), 900);
+    }
+  }
+
+  // ---- Birthday show ----
+  function showBirthday() {
+    // Start petal rain
+    const rain = document.getElementById('petalRain');
+    rain.classList.add('active');
+    const petals = ['🌸','🌺','🌷','🎊','✨','🌼','💐','🎉','⭐','🌹'];
+    for (let i = 0; i < 22; i++) {
+      const p = document.createElement('div');
+      p.className = 'fall-petal';
+      p.textContent = petals[Math.floor(Math.random() * petals.length)];
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDuration = (3 + Math.random() * 3) + 's';
+      p.style.animationDelay = (Math.random() * 3) + 's';
+      p.style.fontSize = (16 + Math.random() * 16) + 'px';
+      rain.appendChild(p);
+    }
+
+    setTimeout(() => {
+      document.getElementById('birthdayMsg').classList.add('show');
+    }, 400);
+  }
+
+  function restart() {
+    waterCount = 0;
+    isPouring = false;
+    document.getElementById('birthdayMsg').classList.remove('show');
+    document.getElementById('petalRain').classList.remove('active');
+    document.getElementById('petalRain').innerHTML = '';
+    hintEl.style.display = '';
+    for (let i = 0; i < TOTAL_WATERS; i++) {
+      document.getElementById('dot-' + i)?.classList.remove('filled');
+    }
+    renderPlant();
+    updateHint();
+  }
+</script>
+</body>
+</html>
